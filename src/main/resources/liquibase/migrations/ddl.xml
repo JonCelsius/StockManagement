@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="2" author="Ion">
+        <!--Creating the Category table-->
+        <createTable tableName="category">
+            <column name="id" type="serial">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="category_rating" type="numeric" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <!--Creating the Brand table-->
+        <createTable tableName="brand">
+            <column name="id" type="serial">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <!--Creating the Customer table-->
+        <createTable tableName="customer">
+            <column name="id" type="serial">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone_number" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <!--Creating the Product table-->
+        <createTable tableName="product">
+            <column name="id" type="serial">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="manufacturer_id" type="int">
+                <constraints nullable="false" references="manufacturer(id)" foreignKeyName="manufacturer_id"/>
+            </column>
+            <column name="category_id" type="int">
+                <constraints nullable="false" references="category(id)" foreignKeyName="category_id"/>
+            </column>
+            <column name="brand_id" type="int">
+                <constraints nullable="false" references="brand(id)" foreignKeyName="brand_id"/>
+            </column>
+            <column name="price" type="numeric">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <!--Creating the Orders table-->
+        <createTable tableName="orders">
+            <column name="id" type="serial">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="customer_id" type="int">
+                <constraints nullable="false" references="customer(id)" foreignKeyName="customer_id"/>
+            </column>
+            <column name="order_date" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <!--Creating the Order Line table-->
+        <createTable tableName="order_line">
+            <column name="id" type="serial">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="order_id" type="int">
+                <constraints nullable="false" references="orders(id)" foreignKeyName="orders_id"/>
+            </column>
+            <column name="product_id" type="int">
+                <constraints nullable="false" references="product(id)" foreignKeyName="product_id"/>
+            </column>
+            <column name="quantity" type="numeric">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <!--Creating the Stock table-->
+        <createTable tableName="stock">
+            <column name="id" type="serial">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="product_id" type="int">
+                <constraints nullable="false" references="product(id)" foreignKeyName="product_id"/>
+            </column>
+            <column name="quantity" type="numeric">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="stock"/>
+            <dropTable tableName="product"/>
+            <dropTable tableName="order_line"/>
+            <dropTable tableName="orders"/>
+            <dropTable tableName="customer"/>
+            <dropTable tableName="manufacturer"/>
+            <dropTable tableName="category"/>
+            <dropTable tableName="brand"/>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

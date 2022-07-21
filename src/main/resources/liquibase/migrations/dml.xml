@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <!--Inserting categories-->
+    <changeSet id="3" author="ION">
+        <insert tableName="category">
+            <column name="name" value="Phones"/>
+        </insert>
+        <insert tableName="category">
+            <column name="name" value="Laptops"/>
+        </insert>
+        <insert tableName="category">
+            <column name="name" value="Monitors"/>
+        </insert>
+        <insert tableName="category">
+            <column name="name" value="Keyboards"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
