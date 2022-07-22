@@ -10,8 +10,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ProductDTO {
     private String name;
-    private ManufacturerDTO manufacturer;
-    private BrandDTO brand;
+    private String manufacturerName;
+    private String brandName;
+    private String categoryName;
     private double price;
 
 }

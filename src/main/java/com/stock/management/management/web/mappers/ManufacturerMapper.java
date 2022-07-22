@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ManufacturerMapper {
+
     public Manufacturer dtoToEntity(ManufacturerDTO manufacturerDTO) {
         Manufacturer manufacturer = new Manufacturer();
         manufacturer.setName(manufacturerDTO.getName());

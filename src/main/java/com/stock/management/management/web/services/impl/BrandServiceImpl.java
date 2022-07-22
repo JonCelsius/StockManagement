@@ -38,4 +38,10 @@ public class BrandServiceImpl implements BrandService {
         return brandList.stream().map(brand -> brandMapper.entityToDTO(brand)).collect(Collectors.toList());
     }
 
+    @Override
+    public Brand getByName(String name) {
+        return brandRepository.getByName(name).orElseThrow(() ->
+                new IllegalArgumentException("Brand with that name" + name +" does not exist"));
+    }
+
 }

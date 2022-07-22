@@ -8,17 +8,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class StockMapper {
 
-    @Autowired
-    ProductMapper productMapper;
 
-    public Stock dtoToEntity(StockDTO stockDTO) {
+    /*public Stock dtoToEntity(StockDTO stockDTO) {
         Stock stock = new Stock();
         stock.setProduct(productMapper.dtoToEntity(stockDTO.getProduct()));
         stock.setQuantity(stockDTO.getQuantity());
         return stock;
-    }
+    }*/
 
     public StockDTO entityToDTO(Stock stock){
-        return new StockDTO(productMapper.entityToDTO(stock.getProduct()),stock.getQuantity());
+        return new
+                StockDTO(stock.getProduct().getId(),stock.getProduct().getName(),stock.getQuantity());
     }
 }

@@ -11,4 +11,6 @@ public interface BrandService {
     void save(BrandDTO brandDTO);
 
     List<BrandDTO> getAll();
+
+    Brand getByName(String name);
 }

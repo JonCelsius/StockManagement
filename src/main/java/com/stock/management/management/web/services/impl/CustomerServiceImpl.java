@@ -32,4 +32,10 @@ public class CustomerServiceImpl implements CustomerService {
         return customerList.stream().map(customer ->
                 customerMapper.entityToDTO(customer)).collect(Collectors.toList());
     }
+
+    @Override
+    public Customer getById(int id) {
+        return  customerRepository.getById(id).orElseThrow(() ->
+                new IllegalArgumentException("Manufacturer with that name" + id +" does not exist"));
+    }
 }

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StockDTO {
-    private ProductDTO product;
+    private Integer productId;
+    private String productName;
     private int quantity;
 }

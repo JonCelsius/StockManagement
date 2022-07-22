@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderLineDTO {
-    private ProductDTO product;
-    private int quantity;
-    private OrdersDTO orders;
+    private Integer productId ;
+    private Integer quantity;
+    private Integer orderId;
 
 
 

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -31,5 +32,13 @@ public class ManufacturerServiceImpl implements ManufacturerService {
         List<Manufacturer> manufacturerList=manufacturerRepository.findAll();
         return manufacturerList.stream().map(manufacturer ->
                 manufacturerMapper.entityToDTO(manufacturer)).collect(Collectors.toList());
+    }
+
+    @Override
+    public Manufacturer getByName(String name) {
+
+         return manufacturerRepository.getByName(name).orElseThrow(() ->
+                 new IllegalArgumentException("Manufacturer with that name" + name +" does not exist"));
+
     }
 }

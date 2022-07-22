@@ -34,4 +34,10 @@ public class CategoryServiceImpl implements CategoryService {
 
         return categoryList.stream().map(category -> categoryMapper.entityToDTO(category)).collect(Collectors.toList());
     }
+
+    @Override
+    public Category getByName(String categoryName) {
+        return categoryRepository.getByName(categoryName).orElseThrow(() ->
+                new IllegalArgumentException("Category with that name" + categoryName +" does not exist"));
+    }
 }
