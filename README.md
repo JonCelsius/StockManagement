@@ -1,7 +1,8 @@
 # STOCK MANAGEMENT APP
 
-** This is intended to be an application for a store management. **
-*It will receive orders from the Orders System (another app), in order to track the stock management. *
+__This is intended to be an application for a store management.__
+
+*It will receive orders from the Orders System (another app), in order to track the stock management.*
 
 Mainly it will be a REST Web Server which will receive requests for stock management. 
 1.	Orders system sends requests about received orders from customers. 
