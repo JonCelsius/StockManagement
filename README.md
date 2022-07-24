@@ -22,3 +22,7 @@ Mainly it will be a REST Web Server which will receive requests for stock manage
 8.	The system must remove stock if the quantity is 0;
 9.	The system should adjust category rating once a week based on weekly orders.
 10.	The system should adjust manufacturer rating once a week based on weekly orders.
+
+
+#### Tasks board
+https://trello.com/b/QAng0uGM/board
